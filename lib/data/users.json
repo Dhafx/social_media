@@ -1,0 +1,84 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "johndoe",
+            "name": "John Doe",
+            "profile_picture": "https://images.pexels.com/photos/1727273/pexels-photo-1727273.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 1000,
+            "following": 500
+        },
+        {
+            "id": 2,
+            "username": "janedoe",
+            "name": "Jane Doe",
+            "profile_picture": "https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 800,
+            "following": 300
+        },
+        {
+            "id": 3,
+            "username": "alice",
+            "name": "Alice",
+            "profile_picture": "https://images.pexels.com/photos/2598024/pexels-photo-2598024.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 1200,
+            "following": 600
+        },
+        {
+            "id": 4,
+            "username": "bob",
+            "name": "Bob",
+            "profile_picture": "https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 900,
+            "following": 400
+        },
+        {
+            "id": 5,
+            "username": "charlie",
+            "name": "Charlie",
+            "profile_picture": "https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 1500,
+            "following": 700
+        },
+        {
+            "id": 6,
+            "username": "david",
+            "name": "David",
+            "profile_picture": "https://images.pexels.com/photos/2743754/pexels-photo-2743754.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 600,
+            "following": 300
+        },
+        {
+            "id": 7,
+            "username": "eve",
+            "name": "Eve",
+            "profile_picture": "https://images.pexels.com/photos/3008355/pexels-photo-3008355.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 750,
+            "following": 200
+        },
+        {
+            "id": 8,
+            "username": "frank",
+            "name": "Frank",
+            "profile_picture": "https://images.pexels.com/photos/3460478/pexels-photo-3460478.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 1100,
+            "following": 800
+        },
+        {
+            "id": 9,
+            "username": "grace",
+            "name": "Grace",
+            "profile_picture": "https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 1400,
+            "following": 900
+        },
+        {
+            "id": 10,
+            "username": "harry",
+            "name": "Harry",
+            "profile_picture": "https://images.pexels.com/photos/2110858/pexels-photo-2110858.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "followers": 800,
+            "following": 400
+        }
+    ]
+}

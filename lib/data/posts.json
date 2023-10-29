@@ -1,0 +1,133 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Beautiful sunset view! 🌅",
+            "likes": 150,
+            "comments": [
+                {
+                    "user_id": 2,
+                    "comment": "Amazing shot!",
+                    "timestamp": "2023-09-27T12:30:00Z"
+                },
+                {
+                    "user_id": 1,
+                    "comment": "Thanks, Jane!",
+                    "timestamp": "2023-09-27T13:00:00Z"
+                }
+            ],
+            "location": "Beach",
+            "timestamp": "2023-09-27T12:00:00Z"
+        },
+        {
+            "id": 2,
+            "user_id": 2,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Exploring new places. 🌍",
+            "likes": 0,
+            "comments": [],
+            "location": "Mountains",
+            "timestamp": "2023-09-27T13:30:00Z"
+        },
+        {
+            "id": 3,
+            "user_id": 3,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Coffee time! ☕",
+            "likes": 30,
+            "comments": [],
+            "location": "Cafe",
+            "timestamp": "2023-09-27T14:00:00Z"
+        },
+        {
+            "id": 4,
+            "user_id": 4,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Nature's beauty. 🌳",
+            "likes": 75,
+            "comments": [
+                {
+                    "user_id": 5,
+                    "comment": "Wow, stunning!",
+                    "timestamp": "2023-09-27T15:30:00Z"
+                }
+            ],
+            "location": "Forest",
+            "timestamp": "2023-09-27T15:00:00Z"
+        },
+        {
+            "id": 5,
+            "user_id": 5,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Sunrise vibes. 🌄",
+            "likes": 120,
+            "comments": [],
+            "location": "Hill",
+            "timestamp": "2023-09-27T16:30:00Z"
+        },
+        {
+            "id": 6,
+            "user_id": 6,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "City lights. 🌃",
+            "likes": 45,
+            "comments": [],
+            "location": "City",
+            "timestamp": "2023-09-27T17:00:00Z"
+        },
+        {
+            "id": 7,
+            "user_id": 7,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Gourmet delights. 🍔",
+            "likes": 98,
+            "comments": [
+                {
+                    "user_id": 8,
+                    "comment": "Yum, I want that!",
+                    "timestamp": "2023-09-27T18:15:00Z"
+                }
+            ],
+            "location": "Restaurant",
+            "timestamp": "2023-09-27T18:00:00Z"
+        },
+        {
+            "id": 8,
+            "user_id": 8,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Mountain adventure. ⛰️",
+            "likes": 25,
+            "comments": [],
+            "location": "Mountains",
+            "timestamp": "2023-09-27T19:30:00Z"
+        },
+        {
+            "id": 9,
+            "user_id": 9,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Relaxing by the lake. 🏞️",
+            "likes": 62,
+            "comments": [],
+            "location": "Lake",
+            "timestamp": "2023-09-27T20:00:00Z"
+        },
+        {
+            "id": 10,
+            "user_id": 10,
+            "image_url": "https://images.pexels.com/photos/18394309/pexels-photo-18394309/free-photo-of-portrait-of-a-young-boy-with-a-shadowy-silhouette-against-the-wall.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
+            "caption": "Underwater beauty. 🐠",
+            "likes": 34,
+            "comments": [
+                {
+                    "user_id": 1,
+                    "comment": "Amazing underwater world!",
+                    "timestamp": "2023-09-27T21:45:00Z"
+                }
+            ],
+            "location": "Ocean",
+            "timestamp": "2023-09-27T21:30:00Z"
+        }
+    ]
+}
