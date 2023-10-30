@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
+import '../widgets/user_bookmarks.dart';
+import '../widgets/user_posts.dart';
+import 'follow_screen.dart';
 import '../widgets/story.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -21,11 +24,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     'https://images.pexels.com/photos/18103235/pexels-photo-18103235/free-photo-of-a-bull-beside-a-road-sign.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
   ];
 
+  final List<Widget> tabBarView = const [
+    UserPosts(),
+    UserBookmarks(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return DefaultTabController(
+      length: 2,
+      initialIndex: 0,
+      child: Scaffold(
+        body: SafeArea(
           child: Column(
             children: <Widget>[
               Container(
@@ -48,17 +58,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    const Column(
-                      children: [
-                        Text(
-                          '321k',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w700,
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          const FollowScreen(
+                            index: 0,
                           ),
-                        ),
-                        Text('followers'),
-                      ],
+                        );
+                      },
+                      child: const Column(
+                        children: [
+                          Text(
+                            '321k',
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text('followers'),
+                        ],
+                      ),
                     ),
                     Container(
                       padding: const EdgeInsets.all(2.0),
@@ -90,17 +109,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    const Column(
-                      children: [
-                        Text(
-                          '125',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w700,
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          const FollowScreen(
+                            index: 1,
                           ),
-                        ),
-                        Text('following'),
-                      ],
+                        );
+                      },
+                      child: const Column(
+                        children: [
+                          Text(
+                            '125',
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text('following'),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -205,7 +233,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -214,35 +241,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    GestureDetector(
-                      child: const Icon(CupertinoIcons.photo_on_rectangle),
+                child: const TabBar(
+                  tabs: [
+                    Tab(
+                      icon: Icon(CupertinoIcons.photo_on_rectangle),
                     ),
-                    GestureDetector(
-                      child: const Icon(CupertinoIcons.bookmark),
+                    Tab(
+                      icon: Icon(CupertinoIcons.bookmark),
                     ),
                   ],
                 ),
               ),
-              Container(
-                height: 500,
-                padding: const EdgeInsets.all(16),
-                child: MasonryGridView.builder(
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  itemCount: imgUrl.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate:
-                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3),
-                  itemBuilder: (BuildContext context, int index) => ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(imgUrl[index]),
-                  ),
-                ),
-              ),
+              Expanded(
+                child: TabBarView(children: tabBarView),
+              )
             ],
           ),
         ),

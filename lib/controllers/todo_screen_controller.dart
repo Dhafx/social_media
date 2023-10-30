@@ -22,7 +22,6 @@ class TodoScreenController extends GetxController {
 
     try {
       final http.Response response = await http.get(Uri.parse(url));
-
       if (response.statusCode == 200) {
         userId.value = Todo.fromJson(jsonDecode(response.body)).userId;
         id.value = Todo.fromJson(jsonDecode(response.body)).id;
@@ -32,7 +31,7 @@ class TodoScreenController extends GetxController {
         throw Exception('Failed to load todo');
       }
     } catch (error) {
-      throw Exception('Failed to load todo: $error');
+      throw Exception('Error: $error');
     }
   }
 }

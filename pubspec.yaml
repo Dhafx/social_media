@@ -41,6 +41,7 @@ dependencies:
     image_cropper: ^5.0.0
     flutter_storage_path: ^1.0.4
     http: ^1.1.0
+    webview_flutter: ^4.4.1
 
 dev_dependencies:
     flutter_test:
