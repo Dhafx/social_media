@@ -27,8 +27,10 @@ class AuthController extends GetxController {
   }
 
   //text editing controller yg fungsinya mirip dengan clearing function
+  //untuk memberhentikan dan membersihkan sumber daya yang digunakan masing-masing 
+  //controller variabel
   @override
-  void onClose() {
+  void onClose() {//adalah metode yang dioverride dari superclass StateNotifier. Metode ini dipanggil ketika widget terkait dihapus dari pohon widget.
     username.dispose();
     email.dispose();
     password.dispose();
