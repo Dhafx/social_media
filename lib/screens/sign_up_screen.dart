@@ -13,6 +13,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  //Get.put Menginisialisasi AuthController menggunakan Get.put untuk mengelola state aplikasi.
   final AuthController authController = Get.put(AuthController());
 
   @override
@@ -27,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // Header aplikasi dengan logo dan teks "Social Media".
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -48,6 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
+                // Judul untuk bagian pendaftaran akun.
                 const SizedBox(height: 64),
                 const Text(
                   'Create your account',
@@ -56,6 +59,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+
+                // Input field untuk username, email, dan password menggunakan FormTextField.
                 const SizedBox(height: 32),
                 FormTextField(
                   fieldController: authController.username,
@@ -74,6 +79,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   type: 'password',
                   fieldLabelText: 'Password',
                 ),
+                // Indikator loading selama proses pendaftaran.
+
                 const SizedBox(height: 16),
                 Obx(() {
                   return authController.isLoading.value
@@ -87,7 +94,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         )
                       : const SizedBox();
                 }),
-                const SizedBox(height: 16),
+                const SizedBox(height: 16),// Tombol untuk mengeksekusi proses signup atau pendaftaran.
+
                 GestureDetector(
                   onTap: () {
                     authController.signUp();
@@ -109,6 +117,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
+
+                // Tombol untuk masuk dengan akun Google.
                 const SizedBox(height: 16),
                 GestureDetector(
                   onTap: () {},
@@ -143,13 +153,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 32),
+                
+                // Tautan untuk masuk ke layar masuk akun.
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Text('Already have an account? '),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() {
+                        Get.to(() {//Menginisiasi navigasi ke layar masuk (SignInScreen) ketika pengguna mengetuk tautan "Sign In".
                           return const SignInScreen();
                         });
                       },
