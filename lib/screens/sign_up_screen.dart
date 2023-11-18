@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           physics: const NeverScrollableScrollPhysics(),
           child: Container(
             height: MediaQuery.of(context).size.height,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
