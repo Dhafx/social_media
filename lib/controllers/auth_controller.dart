@@ -6,6 +6,7 @@ import '../screens/sign_in_screen.dart';
 import '../widgets/bottom_navbar.dart';
 
 class AuthController extends GetxController {
+  // Komen
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final TextEditingController username = TextEditingController();
   final TextEditingController email = TextEditingController();
