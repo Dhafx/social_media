@@ -5,14 +5,15 @@ import 'package:get/get.dart';
 import '../screens/sign_in_screen.dart';
 import '../widgets/bottom_navbar.dart';
 
+//inisiasi 4 variabel terakhir, username, email, pw, state isLoading,
 class AuthController extends GetxController {
-  // Komen
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final TextEditingController username = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final RxBool isLoading = false.obs;
 
+//kalo value usernya masih kosong, dia bakal ngereturn SignInScreen dengan penggunaan authStateChanges dengan inisiasi objek user
   @override
   void onInit() {
     firebaseAuth.authStateChanges().listen((User? user) {
@@ -25,6 +26,7 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
+//text editing controller yg fungsinya mirip dengan clearing function
   @override
   void onClose() {
     username.dispose();
