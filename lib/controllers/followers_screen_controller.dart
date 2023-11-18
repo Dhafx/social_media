@@ -24,6 +24,7 @@ class FollowersScreenController extends GetxController {
 
     try {
       final http.Response response = await http.get(url, headers: headers);
+
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseBody = jsonDecode(response.body);
         final List<dynamic> collectorList = responseBody['collector'];

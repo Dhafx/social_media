@@ -10,7 +10,7 @@ class UserBookmarks extends StatefulWidget {
 class _UserBookmarksState extends State<UserBookmarks> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Bookmark'),
     );
   }

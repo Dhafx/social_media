@@ -53,15 +53,17 @@ class _PostState extends State<Post> {
                         ),
                       ),
                     ),
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          'username',
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 2),
+                          child: const Text(
+                            'username',
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          ),
                         ),
-                        SizedBox(height: 2),
-                        Text(
+                        const Text(
                           'location',
                           style: TextStyle(
                             fontSize: 12,
@@ -94,16 +96,20 @@ class _PostState extends State<Post> {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: const Icon(CupertinoIcons.heart),
+                    Container(
+                      margin: EdgeInsets.only(right: 16),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const Icon(CupertinoIcons.heart),
+                      ),
                     ),
-                    const SizedBox(width: 16),
-                    GestureDetector(
-                      onTap: () {},
-                      child: const Icon(CupertinoIcons.chat_bubble),
+                    Container(
+                      margin: EdgeInsets.only(right: 16),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const Icon(CupertinoIcons.chat_bubble),
+                      ),
                     ),
-                    const SizedBox(width: 16),
                     GestureDetector(
                       onTap: () {},
                       child: const Icon(CupertinoIcons.paperplane),

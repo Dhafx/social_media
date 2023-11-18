@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/following_screen_controller.dart';
-import 'web_view_screen.dart';
 
 class FollowingScreen extends StatefulWidget {
   const FollowingScreen({super.key});
@@ -13,7 +12,7 @@ class FollowingScreen extends StatefulWidget {
 }
 
 class _FollowingScreenState extends State<FollowingScreen> {
-  FollowingScreenController followingScreenController =
+  final FollowingScreenController followingScreenController =
       Get.put(FollowingScreenController());
 
   @override
@@ -23,9 +22,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
           itemCount: followingScreenController.following.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              onTap: () {
-                Get.to(WebViewScreen());
-              },
+              onTap: () {},
               child: Container(
                 margin: index == 0
                     ? const EdgeInsets.only(top: 16)
@@ -67,6 +64,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
