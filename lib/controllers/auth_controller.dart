@@ -13,7 +13,7 @@ class AuthController extends GetxController {
   final TextEditingController password = TextEditingController();
   final RxBool isLoading = false.obs;
 
-//kalo value usernya masih kosong, dia bakal ngereturn SignInScreen dengan penggunaan authStateChanges dengan inisiasi objek user
+  //kalo value usernya masih kosong, dia bakal ngereturn SignInScreen dengan penggunaan authStateChanges dengan inisiasi objek user
   @override
   void onInit() {
     firebaseAuth.authStateChanges().listen((User? user) {
@@ -26,7 +26,7 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
-//text editing controller yg fungsinya mirip dengan clearing function
+  //text editing controller yg fungsinya mirip dengan clearing function
   @override
   void onClose() {
     username.dispose();
