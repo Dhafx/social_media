@@ -38,23 +38,21 @@ class AuthController extends GetxController {
     password.clear();
   }
 
-  // Fungsi untuk melakukan registrasi user baru
   Future<void> signUp() async {
     try {
-      isLoading.value = true; // Set status loading menjadi true
+      isLoading.value = true;
       await firebaseAuth.createUserWithEmailAndPassword(
         email: email.text,
         password: password.text,
       );
 
       if (firebaseAuth.currentUser != null) {
-        clearValues(); // Membersihkan nilai controller jika registrasi berhasil
+        clearValues();
         Get.offAll(() {
-          return const BottomNavbar(); // Redirect ke halaman Bottom Navbar
+          return const BottomNavbar();
         });
       }
     } catch (error) {
-      // Menangani error dengan menampilkan dialog
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
         title: 'Error',
@@ -79,26 +77,24 @@ class AuthController extends GetxController {
         ],
       );
     } finally {
-      isLoading.value = false; // Set status loading menjadi false setelah selesai
+      isLoading.value = false;
     }
   }
 
-  // Fungsi untuk melakukan login
   Future<void> signIn() async {
     try {
-      isLoading.value = true; // Set status loading menjadi true
+      isLoading.value = true;
       await firebaseAuth.signInWithEmailAndPassword(
         email: email.text,
         password: password.text,
       );
       if (firebaseAuth.currentUser != null) {
-        clearValues(); // Membersihkan nilai controller jika login berhasil
+        clearValues();
         Get.offAll(() {
-          return const BottomNavbar(); // Redirect ke halaman Bottom Navbar
+          return const BottomNavbar();
         });
       }
     } catch (error) {
-      // Menangani error dengan menampilkan dialog
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
         title: 'Error',
@@ -123,16 +119,12 @@ class AuthController extends GetxController {
         ],
       );
     } finally {
-      isLoading.value = false; // Set status loading menjadi false setelah selesai
+      isLoading.value = false;
     }
   }
 
-  // Fungsi untuk melanjutkan otentikasi dengan Google (belum diimplementasikan)
   Future<void> continueWithGoogle() async {
-    try {
-      // Fungsi belum diimplementasikan
-    } catch (error) {
-      // Menangani error dengan menampilkan dialog
+    try {} catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
         title: 'Error',
@@ -143,7 +135,7 @@ class AuthController extends GetxController {
         ),
         middleText: 'Something went wrong.',
         actions: [
-4          TextButton(
+          TextButton(
             onPressed: () {
               Get.back();
             },
@@ -159,12 +151,10 @@ class AuthController extends GetxController {
     }
   }
 
-  // Fungsi untuk logout
   Future<void> signOut() async {
     try {
-      firebaseAuth.signOut(); // Melakukan logout
+      firebaseAuth.signOut();
     } catch (error) {
-      // Menangani error dengan menampilkan dialog
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
         title: 'Error',

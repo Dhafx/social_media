@@ -1,31 +1,33 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:appwrite/appwrite.dart';
 
-class StorageController extends ClientController{
+import 'client_controller.dart';
+
+class StorageController extends ClientController {
   Storage? storage;
 
   @override
-  void onInit(){
+  void onInit() {
     super.onInit();
 
     //appwrite
     storage = Storage(client);
   }
 
-  Future storeImage()async{
-    try{
+  Future storeImage() async {
+    try {
       final result = await storage!.createFile(
-        bucketId:'[BUCKET_ID]',
-        fieldId: ID.unique(),
+        bucketId: '[BUCKET_ID]',
+        fileId: ID.unique(),
         file: InputFile.fromPath(
-          path:'./path-to-files/image.jpg',
-          filename:'image.jpg',
+          path: './path-to-files/image.jpg',
+          filename: 'image.jpg',
         ),
       );
 
       print("StorageController:: storeImage $result");
-    }
-
-    catch(error){
+    } catch (error) {
       Get.defaultDialog(
         title: "Error Storage",
         titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
