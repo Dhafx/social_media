@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:social_media/controllers/client_controller.dart';
+import 'package:appwrite/appwrite.dart';
+
+import 'client_controller.dart';
 
 class AccountController extends ClientController {
   Account? account;
@@ -9,7 +11,6 @@ class AccountController extends ClientController {
   void onInit() {
     super.onInit();
 
-// appwrite
     account = Account(client);
   }
 
