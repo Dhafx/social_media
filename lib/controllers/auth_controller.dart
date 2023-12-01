@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../screens/sign_in_screen.dart';
 import '../widgets/bottom_navbar.dart';
 
-//inisiasi 4 variabel terakhir, username, email, pw, state isLoading,
 class AuthController extends GetxController {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final TextEditingController username = TextEditingController();
@@ -13,7 +12,6 @@ class AuthController extends GetxController {
   final TextEditingController password = TextEditingController();
   final RxBool isLoading = false.obs;
 
-  //kalo value usernya masih kosong, dia bakal ngereturn SignInScreen dengan penggunaan authStateChanges dengan inisiasi objek user
   @override
   void onInit() {
     firebaseAuth.authStateChanges().listen((User? user) {
@@ -26,11 +24,8 @@ class AuthController extends GetxController {
     super.onInit();
   }
 
-  //text editing controller yg fungsinya mirip dengan clearing function
-  //untuk memberhentikan dan membersihkan sumber daya yang digunakan masing-masing 
-  //controller variabel
   @override
-  void onClose() {//adalah metode yang dioverride dari superclass StateNotifier. Metode ini dipanggil ketika widget terkait dihapus dari pohon widget.
+  void onClose() {
     username.dispose();
     email.dispose();
     password.dispose();

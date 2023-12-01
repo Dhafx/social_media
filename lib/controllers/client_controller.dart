@@ -6,13 +6,13 @@ class ClientController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
-// appwrite
     const endPoint = "ENDPOINT_APPWRITE";
     const projectID = "PROJECT_APPWRITE";
     client
         .setEndpoint(endPoint)
         .setProject(projectID)
         .setSelfSigned(status: true);
+
+    super.onInit();
   }
 }
