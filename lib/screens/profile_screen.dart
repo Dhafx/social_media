@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:social_media/controllers/profile_screen_controller.dart';
 
 import '../controllers/auth_controller.dart';
 import 'follow_screen.dart';
@@ -17,6 +18,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final AuthController authController = Get.put(AuthController());
+  final ProfileScreenController profileScreenController =
+      Get.put(ProfileScreenController());
 
   final List<String> imgUrl = [
     'https://images.pexels.com/photos/15745221/pexels-photo-15745221/free-photo-of-fog-over-water.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
@@ -133,15 +136,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               const SizedBox(height: 16),
-              const Column(
+              Column(
                 children: <Widget>[
-                  Text(
-                    'Julia Shahoferova',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                  Obx(() => Text(
+                        profileScreenController.username.value,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )),
                   Text('UI/UX Designer at @ecommercex'),
                   SizedBox(height: 8),
                   Row(

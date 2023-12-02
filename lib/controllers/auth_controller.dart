@@ -3,11 +3,14 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'acount_controller.dart';
+import 'database_controller.dart';
 import '../screens/sign_in_screen.dart';
 import '../widgets/bottom_navbar.dart';
 
-class AuthController extends AccountController {
+class AuthController extends GetxController {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final AccountController accountController = Get.put(AccountController());
+  final DatabaseController databaseController = Get.put(DatabaseController());
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -47,11 +50,20 @@ class AuthController extends AccountController {
         password: passwordController.text,
       );
       if (firebaseAuth.currentUser != null) {
-        createAccount({
+        accountController.createAccount({
           'userId': firebaseAuth.currentUser?.uid,
           'email': emailController.text,
           'password': passwordController.text,
           'name': usernameController.text,
+        });
+        accountController.createEmailSession({
+          'email': emailController.text,
+          'password': passwordController.text,
+        });
+        databaseController.storeUserName(firebaseAuth.currentUser!.uid, {
+          'full_name': '',
+          'username': usernameController.text,
+          'profile_url': '',
         });
         clearValues();
         Get.offAll(() {

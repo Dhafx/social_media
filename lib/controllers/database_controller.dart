@@ -13,18 +13,13 @@ class DatabaseController extends ClientController {
     databases = Databases(client);
   }
 
-  Future storeUserName(Map map) async {
+  Future storeUserName(String userId, Map map) async {
     try {
-      final result = await databases!.createDocument(
-        databaseId: "Your_database_ID",
-        documentId: ID.unique(),
-        collectionId: "YOUR_COLLECTION_ID",
+      final result = await databases?.createDocument(
+        databaseId: "656b24974b4a6cff4e90",
+        documentId: userId,
+        collectionId: "656b24a91476f8a421d7",
         data: map,
-        permissions: [
-          Permission.read(Role.user("USERID")),
-          Permission.update(Role.user("USERID")),
-          Permission.delete(Role.user("USERID")),
-        ],
       );
       print("DatabaseController:: storeUserName $databases");
     } catch (error) {
@@ -33,7 +28,7 @@ class DatabaseController extends ClientController {
         titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
         titleStyle: Get.context?.theme.textTheme.titleLarge,
         content: Text(
-          "$Error",
+          "$error",
           style: Get.context?.theme.textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
