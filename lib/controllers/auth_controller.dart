@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'acount_controller.dart';
 import '../screens/sign_in_screen.dart';
 import '../widgets/bottom_navbar.dart';
 
-class AuthController extends GetxController {
+class AuthController extends AccountController {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final TextEditingController username = TextEditingController();
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final RxBool isLoading = false.obs;
 
   @override
   void onInit() {
+    super.onInit();
     firebaseAuth.authStateChanges().listen((User? user) {
       if (user == null) {
         Get.offAll(() {
@@ -21,32 +23,36 @@ class AuthController extends GetxController {
         });
       }
     });
-    super.onInit();
   }
 
   @override
   void onClose() {
-    username.dispose();
-    email.dispose();
-    password.dispose();
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.onClose();
   }
 
   void clearValues() {
-    username.clear();
-    email.clear();
-    password.clear();
+    usernameController.clear();
+    emailController.clear();
+    passwordController.clear();
   }
 
   Future<void> signUp() async {
     try {
       isLoading.value = true;
       await firebaseAuth.createUserWithEmailAndPassword(
-        email: email.text,
-        password: password.text,
+        email: emailController.text,
+        password: passwordController.text,
       );
-
       if (firebaseAuth.currentUser != null) {
+        createAccount({
+          'userId': firebaseAuth.currentUser?.uid,
+          'email': emailController.text,
+          'password': passwordController.text,
+          'name': usernameController.text,
+        });
         clearValues();
         Get.offAll(() {
           return const BottomNavbar();
@@ -85,8 +91,8 @@ class AuthController extends GetxController {
     try {
       isLoading.value = true;
       await firebaseAuth.signInWithEmailAndPassword(
-        email: email.text,
-        password: password.text,
+        email: emailController.text,
+        password: passwordController.text,
       );
       if (firebaseAuth.currentUser != null) {
         clearValues();

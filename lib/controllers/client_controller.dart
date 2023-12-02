@@ -6,13 +6,12 @@ class ClientController extends GetxController {
 
   @override
   void onInit() {
-    const endPoint = "ENDPOINT_APPWRITE";
-    const projectID = "PROJECT_APPWRITE";
+    const endPoint = "https://cloud.appwrite.io/v1";
+    const projectID = "6565fd44a53325be066e";
     client
         .setEndpoint(endPoint)
         .setProject(projectID)
         .setSelfSigned(status: true);
-
     super.onInit();
   }
 }

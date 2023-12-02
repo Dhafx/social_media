@@ -5,13 +5,11 @@ import 'package:appwrite/appwrite.dart';
 import 'client_controller.dart';
 
 class DatabaseController extends ClientController {
-  Databases? databases;
+  late final Databases? databases;
 
   @override
   void onInit() {
     super.onInit();
-
-    //appwrite
     databases = Databases(client);
   }
 
@@ -28,7 +26,6 @@ class DatabaseController extends ClientController {
           Permission.delete(Role.user("USERID")),
         ],
       );
-
       print("DatabaseController:: storeUserName $databases");
     } catch (error) {
       Get.defaultDialog(

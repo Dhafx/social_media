@@ -58,19 +58,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 32),
                 FormTextField(
-                  fieldController: authController.username,
+                  fieldController: authController.usernameController,
                   type: 'text',
                   fieldLabelText: 'Username',
                 ),
                 const SizedBox(height: 16),
                 FormTextField(
-                  fieldController: authController.email,
+                  fieldController: authController.emailController,
                   type: 'text',
                   fieldLabelText: 'Email',
                 ),
                 const SizedBox(height: 16),
                 FormTextField(
-                  fieldController: authController.password,
+                  fieldController: authController.passwordController,
                   type: 'password',
                   fieldLabelText: 'Password',
                 ),

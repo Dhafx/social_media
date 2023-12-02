@@ -5,57 +5,78 @@ import 'package:appwrite/appwrite.dart';
 import 'client_controller.dart';
 
 class AccountController extends ClientController {
-  Account? account;
+  late final Account? account;
 
   @override
   void onInit() {
     super.onInit();
-
     account = Account(client);
   }
 
   Future createAccount(Map map) async {
     try {
-      final result = await account!.create(
+      await account?.create(
         userId: map['userId'],
         email: map['email'],
         password: map['password'],
         name: map['name'],
       );
-      print("AccountController:: createAccount $result");
     } catch (error) {
       Get.defaultDialog(
-        title: "Error Account",
-        titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
-        titleStyle: Get.context?.theme.textTheme.titleLarge,
-        content: Text(
-          "$error",
-          style: Get.context?.theme.textTheme.bodyMedium,
-          textAlign: TextAlign.center,
+        titlePadding: const EdgeInsets.all(16),
+        title: 'Error',
+        titleStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: Color(0xFFFF6161),
         ),
-        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
+        middleText: 'Something went wrong.',
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text(
+              'Ok',
+              style: TextStyle(
+                color: Color(0xFF7737FF),
+              ),
+            ),
+          ),
+        ],
       );
     }
   }
 
   Future createEmailSession(Map map) async {
     try {
-      final result = await account!.createEmailSession(
+      await account?.createEmailSession(
         email: map['email'],
         password: map['password'],
       );
-      print("AccountController:: createEmailSession $result");
     } catch (error) {
       Get.defaultDialog(
-        title: "Error Account",
-        titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
-        titleStyle: Get.context?.theme.textTheme.titleLarge,
-        content: Text(
-          "$error",
-          style: Get.context?.theme.textTheme.bodyMedium,
-          textAlign: TextAlign.center,
+        titlePadding: const EdgeInsets.all(16),
+        title: 'Error',
+        titleStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: Color(0xFFFF6161),
         ),
-        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
+        middleText: 'Something went wrong.',
+        actions: [
+          TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text(
+              'Ok',
+              style: TextStyle(
+                color: Color(0xFF7737FF),
+              ),
+            ),
+          ),
+        ],
       );
     }
   }

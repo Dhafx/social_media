@@ -59,13 +59,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 32),
                 FormTextField(
                   type: 'text',
-                  fieldController: authController.email,
+                  fieldController: authController.emailController,
                   fieldLabelText: 'Email',
                 ),
                 const SizedBox(height: 16),
                 FormTextField(
                   type: 'password',
-                  fieldController: authController.password,
+                  fieldController: authController.passwordController,
                   fieldLabelText: 'Password',
                 ),
                 const SizedBox(height: 16),

@@ -10,8 +10,6 @@ class StorageController extends ClientController {
   @override
   void onInit() {
     super.onInit();
-
-    //appwrite
     storage = Storage(client);
   }
 
@@ -25,7 +23,6 @@ class StorageController extends ClientController {
           filename: 'image.jpg',
         ),
       );
-
       print("StorageController:: storeImage $result");
     } catch (error) {
       Get.defaultDialog(
