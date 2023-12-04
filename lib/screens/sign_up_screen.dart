@@ -128,7 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image.asset(
-                          'lib/assets/images/google.png',
+                          'assets/images/google.png',
                           width: 16,
                         ),
                         const SizedBox(width: 16),

@@ -1,36 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:appwrite/appwrite.dart';
 
-import 'client_controller.dart';
+import 'appwrite_controller.dart';
 
-class AccountController extends ClientController {
-  late final Account? account;
-
-  @override
-  void onInit() {
-    super.onInit();
-    account = Account(client);
-  }
-
-  Future createAccount(Map map) async {
+class AccountController extends AppwriteController {
+  Future createAccount(
+    String userId,
+    String email,
+    String password,
+    String name,
+  ) async {
     try {
-      await account?.create(
-        userId: map['userId'],
-        email: map['email'],
-        password: map['password'],
-        name: map['name'],
+      await account.create(
+        userId: userId,
+        email: email,
+        password: password,
+        name: name,
       );
     } catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Error',
+        title: 'Appwrite Create Account Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: Color(0xFFFF6161),
         ),
-        middleText: 'Something went wrong.',
+        middleText: '$error',
         actions: [
           TextButton(
             onPressed: () {
@@ -48,22 +44,22 @@ class AccountController extends ClientController {
     }
   }
 
-  Future createEmailSession(Map map) async {
+  Future createEmailSession(String email, String password) async {
     try {
-      await account?.createEmailSession(
-        email: map['email'],
-        password: map['password'],
+      await account.createEmailSession(
+        email: email,
+        password: password,
       );
     } catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Error',
+        title: 'Appwrite Crete Email Session Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: Color(0xFFFF6161),
         ),
-        middleText: 'Something went wrong.',
+        middleText: '$error',
         actions: [
           TextButton(
             onPressed: () {

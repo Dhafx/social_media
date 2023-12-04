@@ -4,7 +4,7 @@ import '../screens/add_post_screen.dart';
 import '../screens/activity_screen.dart';
 import '../screens/profile_screen.dart';
 
-const List pages = [
+const List PAGES = [
   HomeScreen(),
   SearchScreen(),
   AddPostScreen(),

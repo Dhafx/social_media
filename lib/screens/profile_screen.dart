@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:social_media/controllers/profile_screen_controller.dart';
+import 'package:social_media/screens/edit_profile_screen.dart';
 
 import '../controllers/auth_controller.dart';
+import '../controllers/profile_screen_controller.dart';
 import 'follow_screen.dart';
 import '../widgets/story.dart';
-import '../widgets/user_bookmarks.dart';
 import '../widgets/user_posts.dart';
+import '../widgets/user_bookmarks.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -71,16 +72,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         return const FollowScreen(index: 0);
                       });
                     },
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text(
-                          '321k',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text('followers'),
+                        Obx(() {
+                          return Text(
+                            '${profileScreenController.followers.length}',
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          );
+                        }),
+                        const Text('followers'),
                       ],
                     ),
                   ),
@@ -97,22 +100,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       shape: BoxShape.circle,
                     ),
-                    child: Container(
-                      width: 96,
-                      height: 96,
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://images.pexels.com/photos/1727273/pexels-photo-1727273.jpeg?auto=compress&cs=tinysrgb&w=600'),
-                          fit: BoxFit.cover,
-                        ),
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          width: 2,
-                          color: const Color(0xFFFFFFFF),
-                        ),
-                      ),
-                    ),
+                    child: profileScreenController.profilePictureUrl.value != ''
+                        ? Container(
+                            width: 96,
+                            height: 96,
+                            decoration: BoxDecoration(
+                              image: const DecorationImage(
+                                image: NetworkImage(
+                                    'https://images.pexels.com/photos/1727273/pexels-photo-1727273.jpeg?auto=compress&cs=tinysrgb&w=600'),
+                                fit: BoxFit.cover,
+                              ),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 2,
+                                color: const Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          )
+                        : Container(
+                            width: 96,
+                            height: 96,
+                            decoration: BoxDecoration(
+                              image: const DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/blank-profile.png'),
+                                fit: BoxFit.cover,
+                              ),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 2,
+                                color: const Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -120,16 +140,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         return const FollowScreen(index: 1);
                       });
                     },
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text(
-                          '125',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text('following'),
+                        Obx(() {
+                          return Text(
+                            '${profileScreenController.following.length}',
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          );
+                        }),
+                        const Text('following'),
                       ],
                     ),
                   ),
@@ -138,22 +160,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 16),
               Column(
                 children: <Widget>[
-                  Obx(() => Text(
-                        profileScreenController.username.value,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      )),
-                  Text('UI/UX Designer at @ecommercex'),
-                  SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(CupertinoIcons.map_pin),
-                      Text('Location'),
-                    ],
-                  ),
+                  Obx(() {
+                    return Text(
+                      profileScreenController.username.value,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  }),
+                  Obx(() {
+                    return profileScreenController.bio.value != ''
+                        ? Text(
+                            profileScreenController.bio.value,
+                          )
+                        : const SizedBox();
+                  }),
                 ],
               ),
               const SizedBox(height: 16),
@@ -161,6 +183,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
+                    onTap: () {
+                      Get.to(() {
+                        return const EditProfileScreen();
+                      });
+                    },
                     child: Container(
                       width: 140,
                       padding: const EdgeInsets.symmetric(

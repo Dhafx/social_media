@@ -2,20 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:appwrite/appwrite.dart';
 
-import 'client_controller.dart';
+import 'appwrite_controller.dart';
 
-class StorageController extends ClientController {
-  Storage? storage;
-
-  @override
-  void onInit() {
-    super.onInit();
-    storage = Storage(client);
-  }
-
+class StorageController extends AppwriteController {
   Future storeImage() async {
     try {
-      final result = await storage!.createFile(
+      final result = await storage.createFile(
         bucketId: '[BUCKET_ID]',
         fileId: ID.unique(),
         file: InputFile.fromPath(

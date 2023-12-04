@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'acount_controller.dart';
+import 'firebase_controller.dart';
 import 'database_controller.dart';
 import '../screens/sign_in_screen.dart';
 import '../widgets/bottom_navbar.dart';
 
-class AuthController extends GetxController {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final AccountController accountController = Get.put(AccountController());
+class AuthController extends FirebaseController {
   final DatabaseController databaseController = Get.put(DatabaseController());
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -49,22 +47,11 @@ class AuthController extends GetxController {
         email: emailController.text,
         password: passwordController.text,
       );
-      if (firebaseAuth.currentUser != null) {
-        accountController.createAccount({
-          'userId': firebaseAuth.currentUser?.uid,
-          'email': emailController.text,
-          'password': passwordController.text,
-          'name': usernameController.text,
-        });
-        accountController.createEmailSession({
-          'email': emailController.text,
-          'password': passwordController.text,
-        });
-        databaseController.storeUserName(firebaseAuth.currentUser!.uid, {
-          'full_name': '',
-          'username': usernameController.text,
-          'profile_url': '',
-        });
+      if (firebaseAuth.currentUser?.uid != null) {
+        databaseController.createUserDcoment(
+          '${firebaseAuth.currentUser?.uid}',
+          usernameController.text,
+        );
         clearValues();
         Get.offAll(() {
           return const BottomNavbar();
@@ -73,13 +60,13 @@ class AuthController extends GetxController {
     } catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Error',
+        title: 'Firebase Sign Up Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: Color(0xFFFF6161),
         ),
-        middleText: 'Something went wrong.',
+        middleText: '$error',
         actions: [
           TextButton(
             onPressed: () {
@@ -115,13 +102,13 @@ class AuthController extends GetxController {
     } catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Error',
+        title: 'Firebase Sign In Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: Color(0xFFFF6161),
         ),
-        middleText: 'Something went wrong.',
+        middleText: '$error',
         actions: [
           TextButton(
             onPressed: () {
@@ -145,13 +132,13 @@ class AuthController extends GetxController {
     try {} catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Error',
+        title: 'Firebase Continue With Google Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: Color(0xFFFF6161),
         ),
-        middleText: 'Something went wrong.',
+        middleText: '$error',
         actions: [
           TextButton(
             onPressed: () {
@@ -175,13 +162,13 @@ class AuthController extends GetxController {
     } catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Error',
+        title: 'Firebase Sign Out Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,
           color: Color(0xFFFF6161),
         ),
-        middleText: 'Something went wrong.',
+        middleText: '$error',
         actions: [
           TextButton(
             onPressed: () {

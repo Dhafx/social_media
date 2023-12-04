@@ -1,18 +1,8 @@
-import 'package:appwrite/appwrite.dart';
+import 'appwrite_controller.dart';
 
-import 'client_controller.dart';
-
-class RealtimeController extends ClientController {
-  Realtime? realtime;
-
-  @override
-  void onInit() {
-    super.onInit();
-    realtime = Realtime(client);
-  }
-
+class RealtimeController extends AppwriteController {
   subsUserName() async {
-    final subscription = realtime!.subscribe(['files']);
+    final subscription = realtime.subscribe(['files']);
 
     subscription.stream.listen((response) {
       if (response.events.contains('buckets.*.files.*.create')) {

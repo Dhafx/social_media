@@ -21,7 +21,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        return pages[bottomNavbarController.selectedTab.value];
+        return PAGES[bottomNavbarController.selectedTab.value];
       }),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
