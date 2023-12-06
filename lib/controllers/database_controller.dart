@@ -96,7 +96,7 @@ class DatabaseController extends AppwriteController {
     } catch (error) {
       Get.defaultDialog(
         titlePadding: const EdgeInsets.all(16),
-        title: 'Appwrite Get User Document Error',
+        title: 'Appwrite Update User Document Error',
         titleStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w700,

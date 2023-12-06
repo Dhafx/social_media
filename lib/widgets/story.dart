@@ -44,7 +44,7 @@ class _StoryState extends State<Story> {
                 decoration: BoxDecoration(
                   image: const DecorationImage(
                     image: NetworkImage(
-                        'https://images.pexels.com/photos/1727273/pexels-photo-1727273.jpeg?auto=compress&cs=tinysrgb&w=600'),
+                        'https://cloud.appwrite.io/v1/storage/buckets/656c1f266d48ab41ca12/files/656c21573ed2a9192e83/preview?project=6565fd44a53325be066e'),
                     fit: BoxFit.cover,
                   ),
                   shape: BoxShape.circle,

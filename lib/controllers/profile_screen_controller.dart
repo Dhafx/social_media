@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'firebase_controller.dart';
@@ -5,6 +6,8 @@ import 'database_controller.dart';
 
 class ProfileScreenController extends FirebaseController {
   final DatabaseController databaseController = Get.put(DatabaseController());
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController bioController = TextEditingController();
   final RxString profilePictureUrl = ''.obs;
   final RxString username = ''.obs;
   final RxString bio = ''.obs;
@@ -27,5 +30,12 @@ class ProfileScreenController extends FirebaseController {
     followers.assignAll(result['followers'] ?? []);
     following.assignAll(result['following'] ?? []);
     posts.assignAll(result['posts'] ?? []);
+  }
+
+  void updateUserData() {
+    databaseController.updateUserDocument('${firebaseAuth.currentUser?.uid}', {
+      'username': usernameController.text,
+      'bio': bioController.text,
+    });
   }
 }
